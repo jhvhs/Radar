@@ -82,11 +82,11 @@ fileprivate func fullConcourseData() -> ConcourseData {
     let data = ConcourseData()
     data.concourseUrl = "http://localhost/"
     data.team = Team(concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", pipelines: [
-        Pipeline(id: 1, name: "pipeline-name", paused: false, public: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [
+        Pipeline(id: 1, name: "pipeline-name", isPaused: false, isPublic: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [
             Job(id: 1, name: "test-job", transitionBuild: nil, finishedBuild: Build(id: 1, name: "234", status: .succeeded,
                     startTime: Date(timeIntervalSince1970: 298347), endTime: Date(timeIntervalSince1970: 948559)), nextBuild: nil)
         ]),
-        Pipeline(id: 2, name: "pipeline-two", paused: false, public: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [
+        Pipeline(id: 2, name: "pipeline-two", isPaused: false, isPublic: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [
             Job(id: 21, name: "another-test-job", transitionBuild: nil,
                 finishedBuild: nil,
                 nextBuild: Build(id: 213, name: "29873", status: .started,

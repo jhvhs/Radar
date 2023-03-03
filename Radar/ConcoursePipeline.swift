@@ -8,12 +8,21 @@ struct PipelineGroup: Codable {
 }
 
 struct ConcoursePipeline: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id, name, groups
+        case isPaused = "paused"
+        case isArchived = "archived"
+        case isPublic = "public"
+        case teamName = "team_name"
+        case lastUpdated = "last_updated"
+    }
+
     var id: Int
     var name: String
-    var paused: Bool
-    var archived: Bool
-    var `public`: Bool
+    var isPaused: Bool
+    var isArchived: Bool
+    var isPublic: Bool
     var groups: [PipelineGroup]?
-    var team_name: String
-    var last_updated: Int?
+    var teamName: String
+    var lastUpdated: Int?
 }

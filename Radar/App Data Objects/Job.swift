@@ -11,7 +11,7 @@ struct Job {
         case succeeded
         case unknown
 
-        static func <(lhs: Job.Status, rhs: Job.Status) -> Bool {
+        static func < (lhs: Job.Status, rhs: Job.Status) -> Bool {
             lhs.comparisonValue < rhs.comparisonValue
         }
 

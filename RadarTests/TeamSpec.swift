@@ -16,9 +16,9 @@ class TeamSpec: QuickSpec {
             for jobStatus: Job.Status in [.failed, .errored] {
                 it("is failed if there's \(jobStatus == .failed ? "a" : "an") \(jobStatus) job") {
                     let team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                        Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                        Pipeline(id: 2, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                        Pipeline(id: 3, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(jobStatus)]),
+                        Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                        Pipeline(id: 2, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                        Pipeline(id: 3, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(jobStatus)]),
                     ], error: nil)
 
                     expect(team.statusIcon).to(equal(.failed))
@@ -27,9 +27,9 @@ class TeamSpec: QuickSpec {
 
             it("is successful if all pipelines are successful") {
                 let team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                    Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 2, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 3, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 2, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 3, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
                 ], error: nil)
 
                 expect(team.statusIcon).to(equal(.success))
@@ -37,9 +37,9 @@ class TeamSpec: QuickSpec {
 
             it("is successful for a mix of successful of un-started pipelines") {
                 let team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                    Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 2, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.unknown)]),
-                    Pipeline(id: 3, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 2, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.unknown)]),
+                    Pipeline(id: 3, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
                 ], error: nil)
 
                 expect(team.statusIcon).to(equal(.success))
@@ -47,9 +47,9 @@ class TeamSpec: QuickSpec {
 
             it("is disregarding the paused pipelines") {
                 let team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                    Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 2, name: "", paused: true, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 3, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 2, name: "", isPaused: true, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 3, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
                 ], error: nil)
 
                 expect(team.statusIcon).to(equal(.success))
@@ -57,9 +57,9 @@ class TeamSpec: QuickSpec {
 
             it("is disregarding running pipelines") {
                 let team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                    Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
-                    Pipeline(id: 2, name: "", paused: true, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.started)]),
-                    Pipeline(id: 3, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
+                    Pipeline(id: 2, name: "", isPaused: true, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.started)]),
+                    Pipeline(id: 3, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)]),
                 ], error: nil)
 
                 expect(team.statusIcon).to(equal(.success))
@@ -73,7 +73,7 @@ class TeamSpec: QuickSpec {
             it("is reflects the status icon for a present team") {
                 var team: Team?
                 team = Team(concourseUrl: URL.cachesDirectory, teamName: "", pipelines: [
-                    Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)])
+                    Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [jobWithStatus(.succeeded)])
                 ], error: nil)
                 expect(team.statusIcon).to(equal(.success))
             }

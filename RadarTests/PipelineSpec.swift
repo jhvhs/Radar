@@ -8,13 +8,13 @@ import Foundation
 class PipelineSpec: QuickSpec {
     override func spec() {
         it("returns the pipeline URL") {
-            let pipeline = Pipeline(id: 1, name: "pipeline-name", paused: false, public: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [])
+            let pipeline = Pipeline(id: 1, name: "pipeline-name", isPaused: false, isPublic: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [])
             expect(pipeline.url).to(equal(URL(string: "http://localhost/teams/test-team/pipeline/pipeline-name")!))
         }
 
         describe("status") {
             it("is successful") {
-                let pipeline = Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
+                let pipeline = Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
                     jobWithStatus(.succeeded), jobWithStatus(.succeeded), jobWithStatus(.succeeded)
                 ])
 
@@ -22,7 +22,7 @@ class PipelineSpec: QuickSpec {
             }
 
             it("is failing") {
-                let pipeline = Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
+                let pipeline = Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
                     jobWithStatus(.succeeded), jobWithStatus(.failed)
                 ])
 
@@ -30,13 +30,13 @@ class PipelineSpec: QuickSpec {
             }
 
             it("is paused") {
-                let pipeline = Pipeline(id: 1, name: "", paused: true, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [])
+                let pipeline = Pipeline(id: 1, name: "", isPaused: true, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [])
 
                 expect(pipeline.statusIcon).to(equal(.paused))
             }
 
             it("is running") {
-                let pipeline = Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
+                let pipeline = Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
                     jobWithStatus(.succeeded), jobWithStatus(.started)
                 ])
 
@@ -44,7 +44,7 @@ class PipelineSpec: QuickSpec {
             }
 
             it("is failing if there's an errored job") {
-                let pipeline = Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
+                let pipeline = Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
                     jobWithStatus(.succeeded), jobWithStatus(.errored)
                 ])
 
@@ -52,7 +52,7 @@ class PipelineSpec: QuickSpec {
             }
 
             it("is unknown if there's an aborted job") {
-                let pipeline = Pipeline(id: 1, name: "", paused: false, public: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
+                let pipeline = Pipeline(id: 1, name: "", isPaused: false, isPublic: false, concourseUrl: URL.cachesDirectory, teamName: "", jobs: [
                     jobWithStatus(.succeeded), jobWithStatus(.aborted)
                 ])
 

@@ -22,7 +22,7 @@ struct PipelineView: View {
 
 struct PipelineView_Previews: PreviewProvider {
     static var previews: some View {
-        PipelineView(pipeline: Pipeline(id: 1, name: "pipeline-name", paused: false, public: false, concourseUrl: URL(string: "http://localhost")!, teamName: "preview-team", jobs: [
+        PipelineView(pipeline: Pipeline(id: 1, name: "pipeline-name", isPaused: false, isPublic: false, concourseUrl: URL(string: "http://localhost")!, teamName: "preview-team", jobs: [
             Job(id: 1, name: "", transitionBuild: nil, finishedBuild: Build(id: 1, name: "", status: .succeeded, startTime: Date(), endTime: Date()), nextBuild: nil)
         ]))
     }

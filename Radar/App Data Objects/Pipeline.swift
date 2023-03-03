@@ -5,8 +5,8 @@ import Foundation
 struct Pipeline: Identifiable {
     let id: Int
     let name: String
-    let paused: Bool
-    let `public`: Bool
+    let isPaused: Bool
+    let isPublic: Bool
     let concourseUrl: URL
     let teamName: String
 
@@ -18,7 +18,7 @@ struct Pipeline: Identifiable {
     }
 
     var statusIcon: Icon {
-        if paused {
+        if isPaused {
             return .paused
         }
         if jobs.isEmpty {
