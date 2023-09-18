@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0F463C2AB8C54700DCFF05 /* RemoteDataConversionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0F463B2AB8C54700DCFF05 /* RemoteDataConversionSpec.swift */; };
 		2F3A24AB2968FDCE00DB071B /* FetchTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A24AA2968FDCE00DB071B /* FetchTokenView.swift */; };
 		2F3A24AD2969002200DB071B /* PipelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A24AC2969002200DB071B /* PipelineView.swift */; };
 		2F3A24AF296901BB00DB071B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3A24AE296901BB00DB071B /* DashboardView.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0F463B2AB8C54700DCFF05 /* RemoteDataConversionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataConversionSpec.swift; sourceTree = "<group>"; };
 		2F3A24AA2968FDCE00DB071B /* FetchTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTokenView.swift; sourceTree = "<group>"; };
 		2F3A24AC2969002200DB071B /* PipelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineView.swift; sourceTree = "<group>"; };
 		2F3A24AE296901BB00DB071B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				E1136DF4E174B54A906A2672 /* PipelineSpec.swift */,
 				E1136E630A4C0ED4C7164841 /* TeamSpec.swift */,
 				E1136708BD2783BF94465981 /* Fixtures.swift */,
+				2F0F463B2AB8C54700DCFF05 /* RemoteDataConversionSpec.swift */,
 			);
 			path = RadarTests;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0F463C2AB8C54700DCFF05 /* RemoteDataConversionSpec.swift in Sources */,
 				2F872B1F2971DAB500B4144D /* AppDataConverterSpec.swift in Sources */,
 				2F872B212971EF1900B4144D /* JobSpec.swift in Sources */,
 				E1136B212ED16E7A7BA5F134 /* PipelineSpec.swift in Sources */,

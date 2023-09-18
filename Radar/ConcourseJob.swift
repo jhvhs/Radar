@@ -33,7 +33,8 @@ struct JobInput: Codable {
 
 struct ConcourseJob: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
-        case id, name, teamName, inputs
+        case id, name, inputs
+        case teamName = "team_name"
         case pipelineId = "pipeline_id"
         case pipelineName = "pipeline_name"
         case finishedBuild = "finished_build"
