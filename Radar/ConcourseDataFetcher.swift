@@ -18,6 +18,7 @@ class ConcourseDataFetcher: NSObject, URLSessionTaskDelegate, GenericConcourseDa
         case decodeError(entity: String)
         case downloadError(entity: String)
         case authenticationError
+        case configurationError
     }
 
     var concourseURLString: String
@@ -58,6 +59,7 @@ class ConcourseDataFetcher: NSObject, URLSessionTaskDelegate, GenericConcourseDa
 
 
     func fetchAllData() async throws -> ([ConcoursePipeline], [ConcourseJob]) {
+        guard self.concourseURL.host() != nil else { throw FetcherError.configurationError }
         let (teamData, teamResponse) = try await session.data(from: teamsURL)
         if (teamResponse as! HTTPURLResponse).isUnauthorized {
             throw FetcherError.authenticationError
