@@ -14,7 +14,7 @@ struct Pipeline: Identifiable {
     let jobs: [Job]
 
     var url: URL {
-        concourseUrl.appending(components: "teams", teamName, "pipeline", name)
+        concourseUrl.appending(components: "teams", teamName, "pipelines", name)
     }
 
     var statusIcon: Icon {

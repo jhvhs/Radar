@@ -9,7 +9,7 @@ class PipelineSpec: QuickSpec {
     override func spec() {
         it("returns the pipeline URL") {
             let pipeline = Pipeline(id: 1, name: "pipeline-name", isPaused: false, isPublic: false, concourseUrl: URL(string: "http://localhost")!, teamName: "test-team", jobs: [])
-            expect(pipeline.url).to(equal(URL(string: "http://localhost/teams/test-team/pipeline/pipeline-name")!))
+            expect(pipeline.url).to(equal(URL(string: "http://localhost/teams/test-team/pipelines/pipeline-name")!))
         }
 
         describe("status") {
