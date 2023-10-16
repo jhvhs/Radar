@@ -11,8 +11,8 @@ struct ConcourseMenu: View {
             if let url = concourseData.concourseUrl, let validURL = URL(string: url) {
                 DashboardView(concourseURL: validURL)
 
-                if let team = concourseData.team?.teamName {
-                    Text(team)
+                if let team = concourseData.team {
+                    Text("\(team.teamName) (\(team.pipelines.count))")
                     Divider()
                 }
 
